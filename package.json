@@ -1,33 +1,49 @@
 {
-	"name": "clean-code",
-	"version": "1.0.0",
-	"description": "Учебный репозиторий для задания [«Clean Code»](https://github.com/rolling-scopes-school/tasks/blob/master/fullstack-engineering/tasks/clean-code/README.md) курса RS School Fullstack Engineering.",
-	"main": "app.js",
-	"scripts": {
-		"test": "test",
-		"format": "prettier --write .",
-		"lint": "eslint .",
-		"eslint": "eslint .",
-		"eslint:fix": "eslint . --fix"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Romkalis/clean-code-todo.git"
-	},
-	"author": "",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/Romkalis/clean-code-todo/issues"
-	},
-	"homepage": "https://github.com/Romkalis/clean-code-todo#readme",
-	"devDependencies": {
-		"@eslint/css": "^2.0.1",
-		"@eslint/js": "^10.0.1",
-		"@eslint/json": "^2.1.1",
-		"@eslint/markdown": "^8.0.3",
-		"eslint": "^10.13.0",
-		"eslint-config-prettier": "^10.1.8",
-		"globals": "^17.13.0",
-		"prettier": "^3.9.10"
-	}
+  "name": "clean-code",
+  "version": "1.0.0",
+  "description": "Учебный репозиторий для задания [«Clean Code»](https://github.com/rolling-scopes-school/tasks/blob/master/fullstack-engineering/tasks/clean-code/README.md) курса RS School Fullstack Engineering.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,css}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{md,html}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Romkalis/clean-code-todo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Romkalis/clean-code-todo/issues"
+  },
+  "homepage": "https://github.com/Romkalis/clean-code-todo#readme",
+  "devDependencies": {
+    "@eslint/css": "^2.0.1",
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^2.1.1",
+    "@eslint/markdown": "^8.0.3",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.13.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "prettier": "^3.9.10"
+  }
 }
