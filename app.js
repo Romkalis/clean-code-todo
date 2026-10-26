@@ -11,23 +11,32 @@ const newTaskInput = document.getElementById('new-task');
 const addNewTaskButton = document.getElementsByTagName('button')[0];
 const incomletedTasksList = document.getElementById('incompleteTasks');
 const completedTaskLists = document.getElementById('completed-tasks');
+let nextTaskId = 0;
 
 const createNewTaskElement = function (taskString) {
   const listItem = document.createElement('li');
+  const taskId = `new-task-${++nextTaskId}`;
 
   const checkBox = document.createElement('input');
   const label = document.createElement('label');
   const editInput = document.createElement('input');
+  const editInputLabel = document.createElement('label');
   const editButton = document.createElement('button');
   const deleteButton = document.createElement('button');
   const deleteButtonImg = document.createElement('img');
 
   label.innerText = taskString;
   label.className = 'task';
+  label.htmlFor = `${taskId}-checkbox`;
 
   checkBox.type = 'checkbox';
+  checkBox.id = `${taskId}-checkbox`;
   editInput.type = 'text';
   editInput.className = 'task';
+  editInput.id = `${taskId}-edit`;
+  editInputLabel.className = 'visually-hidden';
+  editInputLabel.htmlFor = editInput.id;
+  editInputLabel.innerText = `Edit ${taskString}`;
   editButton.innerText = 'Edit';
   editButton.className = 'edit';
   deleteButton.className = 'delete';
@@ -37,6 +46,7 @@ const createNewTaskElement = function (taskString) {
   listItem.appendChild(checkBox);
   listItem.appendChild(label);
   listItem.appendChild(editInput);
+  listItem.appendChild(editInputLabel);
   listItem.appendChild(editButton);
   listItem.appendChild(deleteButton);
   return listItem;
@@ -55,7 +65,7 @@ const addTask = function () {
 const editTask = function () {
   const listItem = this.parentNode;
   const editInput = listItem.querySelector('input[type=text]');
-  const label = listItem.querySelector('label');
+  const label = listItem.querySelector('label.task');
   const editBtn = listItem.querySelector('.edit');
 
   const isEditMode = listItem.classList.contains('editMode');
