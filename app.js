@@ -1,16 +1,7 @@
-//Document is the DOM can be accessed in the console with document.window.
-// Tree is from the top, html, body, p etc.
-
-//Problem: User interaction does not provide the correct results.
-//Solution: Add interactivity so the user can manage daily tasks.
-//Break things down into smaller steps and take each step at a time.
-
-// Event handling, user interaction is what starts the code execution.
-
 const newTaskInput = document.getElementById('new-task');
-const addNewTaskButton = document.getElementsByTagName('button')[0];
-const incomletedTasksList = document.getElementById('incompleteTasks');
-const completedTaskLists = document.getElementById('completed-tasks');
+const addNewTaskButton = document.getElementsById('newTaskButton');
+const incompletedTasksList = document.getElementById('incompleteTasks');
+const completedTaskList = document.getElementById('completed-tasks');
 let nextTaskId = 0;
 
 const createNewTaskElement = function (taskString) {
@@ -53,11 +44,11 @@ const createNewTaskElement = function (taskString) {
 };
 
 const addTask = function () {
-  if (!newTaskInput.value) return;
+  if (!newTaskInput.value.trim()) return;
 
   const listItem = createNewTaskElement(newTaskInput.value);
 
-  incomletedTasksList.appendChild(listItem);
+  incompletedTasksList.appendChild(listItem);
   bindTaskEvents(listItem);
   newTaskInput.value = '';
 };
@@ -88,8 +79,8 @@ const deleteTask = function () {
 const toggleTaskStatus = function () {
   const listItem = this.parentNode;
   const destinationList = this.checked
-    ? completedTaskLists
-    : incomletedTasksList;
+    ? completedTaskList
+    : incompletedTasksList;
   destinationList.appendChild(listItem);
 };
 
@@ -108,9 +99,3 @@ const bindTaskEvents = function (taskListItem) {
 document
   .querySelectorAll('#incompleteTasks > li, #completed-tasks > li')
   .forEach(bindTaskEvents);
-
-// Issues with usability don't get seen until they are in front of a human tester.
-
-//prevent creation of empty tasks.
-
-//Change edit to save when you are in edit mode.
