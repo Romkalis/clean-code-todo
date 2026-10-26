@@ -1,5 +1,5 @@
 const newTaskInput = document.getElementById('new-task');
-const addNewTaskButton = document.getElementsById('newTaskButton');
+const addNewTaskButton = document.getElementById('newTaskButton');
 const incompletedTasksList = document.getElementById('incompleteTasks');
 const completedTaskList = document.getElementById('completed-tasks');
 let nextTaskId = 0;
