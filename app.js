@@ -8,7 +8,7 @@
 // Event handling, user interaction is what starts the code execution.
 
 const newTaskInput = document.getElementById('new-task');
-const addButton = document.getElementsByTagName('button')[0]; //first button
+const addNewTaskButton = document.getElementsByTagName('button')[0];
 const incompleteTaskHolder = document.getElementById('incompleteTasks'); //ul of #incompleteTasks
 const completedTasksHolder = document.getElementById('completed-tasks'); //completed-tasks
 
@@ -86,7 +86,7 @@ const toggleTaskStatus = function () {
   destinationList.appendChild(listItem);
 };
 
-addButton.addEventListener('click', addTask);
+addNewTaskButton.addEventListener('click', addTask);
 
 const bindTaskEvents = function (taskListItem) {
   const checkBox = taskListItem.querySelector('input[type=checkbox]');
